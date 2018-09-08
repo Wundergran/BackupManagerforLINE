@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.main_fragment.*
 import no.wunderapps.backupmanagerline.R
 
 class MainFragment : Fragment() {

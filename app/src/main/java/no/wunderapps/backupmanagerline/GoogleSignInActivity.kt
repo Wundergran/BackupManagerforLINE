@@ -37,8 +37,8 @@ abstract class GoogleSignInActivity : AppCompatActivity() {
 		startActivityForResult(googleIntent, SIGN_IN_REQUEST)
 	}
 
-	private fun onGoogleSignIn () {
-		Log.d(LOG_TAG, "Successfully signed in: ${googleSignInAccount?.displayName}")
+	protected open fun onGoogleSignIn () {
+		Log.d(LOG_TAG, "Successfully signed in google acc for: ${googleSignInAccount?.displayName}")
 	}
 
 	private fun handleSignInResult (result: Task<GoogleSignInAccount>) {
