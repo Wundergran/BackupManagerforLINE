@@ -11,9 +11,11 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 
-open class GoogleSignInActivity : AppCompatActivity() {
-	private val LOG_TAG = "GoogleSignInActivity.kt"
-	private final val SIGN_IN_REQUEST = 1
+abstract class GoogleSignInActivity : AppCompatActivity() {
+	companion object {
+		private const val LOG_TAG = "GoogleSignInActivity.kt"
+		private const val SIGN_IN_REQUEST = 1
+	}
 
 	private var signInClient : GoogleSignInClient? = null
 	private var googleSignInAccount : GoogleSignInAccount? = null
@@ -26,7 +28,7 @@ open class GoogleSignInActivity : AppCompatActivity() {
 			onGoogleSignIn()
 		}
 	}
-	fun generateNewSignInRequest () {
+	private fun generateNewSignInRequest () {
 		val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.build()
 		signInClient = GoogleSignIn.getClient(applicationContext, gso)
@@ -35,11 +37,11 @@ open class GoogleSignInActivity : AppCompatActivity() {
 		startActivityForResult(googleIntent, SIGN_IN_REQUEST)
 	}
 
-	fun onGoogleSignIn () {
+	private fun onGoogleSignIn () {
 		Log.d(LOG_TAG, "Successfully signed in: ${googleSignInAccount?.displayName}")
 	}
 
-	fun handleSignInResult (result: Task<GoogleSignInAccount>) {
+	private fun handleSignInResult (result: Task<GoogleSignInAccount>) {
 		try {
 			googleSignInAccount = result.getResult(ApiException::class.java)
 			onGoogleSignIn()
