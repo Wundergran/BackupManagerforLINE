@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import no.wunderapps.backupmanagerline.ui.main.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : GoogleSignInActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -16,9 +16,7 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		// Handle Google Play sign-in
-		if (GoogleSignInHandler.isPlayAvaliable()) {
-			GoogleSignInHandler.signInUser()
-		}
+		signInGoogle()
 	}
 
 }
